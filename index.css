@@ -1,0 +1,83 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  
+  /* Define theme colors as CSS variables for immediate availability */
+  --bg-light: #f8fafc;
+  --bg-dark: #000000;
+}
+
+/* 
+   CRITICAL FIX: 
+   1. Set background on HTML/Body to match app theme (prevents white bars).
+   2. Disable overscroll-behavior to stop "rubber banding" revealing white browser background.
+*/
+html {
+  background-color: var(--bg-light);
+  overscroll-behavior-y: none; /* Prevents pull-to-refresh white gap */
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100%;
+  background-color: var(--bg-light);
+  color: #0f172a;
+  overscroll-behavior-y: none;
+}
+
+/* Dark Mode Immediate Override */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+  }
+}
+
+/* Ensure images don't overflow their containers */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utility to hide scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animation Utilities */
+.animate-bounce-in {
+  animation: bounceIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes scan {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.animate-scan {
+  animation: scan 2s linear infinite;
+}

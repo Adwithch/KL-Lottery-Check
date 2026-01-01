@@ -1,0 +1,7 @@
+{
+  "name": "KL Lottery Check",
+  "description": "A clean, mobile-first app for checking Kerala daily lottery results and verifying ticket numbers with a 'Close Miss' feature.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
